@@ -6,9 +6,9 @@
 # - maven 2+
 
 # Download and install repo tool into ~/bin/repo
-if [ ! -f ~/bin/repo ]; then
+if [ ! -f bin/repo ]; then
 	mkdir -p bin
-	curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+	curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > bin/repo
 	chmod a+x bin/repo
 	export PATH=$PATH:`pwd bin`
 fi
