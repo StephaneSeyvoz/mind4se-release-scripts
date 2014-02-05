@@ -6,17 +6,19 @@
 # - maven 2+
 
 # Download and install repo tool into ~/bin/repo
-if [ ! -d ~/bin/repo ]; then
-	mkdir bin
-	curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
-	chmod a+x ~/bin/repo
+if [ ! -f bin/repo ]; then
+	mkdir -p bin
+	curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > bin/repo
+	chmod a+x bin/repo
+	export PATH=$PATH:`pwd bin`
 fi
 
-mkdir mind4se-release && cd mind4se-release
+mkdir -p mind4se-release
+cd mind4se-release
 
 # Clone all git repositories listed into the manifest
-~/bin/repo init -u https://github.com/geoffroyjabouley/mind4se-release-manifest
-~/bin/repo sync
+repo init -u https://github.com/geoffroyjabouley/mind4se-release-manifest
+repo sync
 
 # Cleanup maven local repository
 rm -rf ~/.m2/repository
