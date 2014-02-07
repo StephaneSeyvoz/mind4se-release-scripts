@@ -13,12 +13,17 @@ if [ ! -f bin/repo ]; then
 	export PATH=$PATH:`pwd bin`
 fi
 
-mkdir -p mind4se-release
-cd mind4se-release
+export release_folder=mind4se-release
+
+rm -rf $release_folder
+mkdir -p $release_folder && cd $release_folder
 
 # Clone all git repositories listed into the manifest
 repo init -u https://github.com/geoffroyjabouley/mind4se-release-manifest
-repo sync
+repo sync -c --no-clone-bundle --jobs=4
+
+# Generate manifest.xml file for the release
+repo --no-pager manifest -r -o src/assemble/resources/manifest.xml
 
 # Cleanup maven local repository
 rm -rf ~/.m2/repository
@@ -28,3 +33,5 @@ mvn -U clean install -f ./mind-compiler/pom.xml --projects org.ow2.mind:mind-com
 
 # Build the mind4se release
 mvn -U clean install -f ./mind4se-compiler/pom.xml
+
+cd ..
