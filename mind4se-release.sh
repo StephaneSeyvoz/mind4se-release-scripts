@@ -32,6 +32,6 @@ rm -rf ~/.m2/repository
 mvn -U clean install -f ./mind-compiler/pom.xml --projects org.ow2.mind:mind-compiler
 
 # Build the mind4se release
-mvn -U clean install -f ./mind4se-compiler/pom.xml
+mvn -U clean install
 
 cd ..

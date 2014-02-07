@@ -28,7 +28,7 @@ rem Install mind-compiler pom into maven lcoal repository (all mind4se plug-ins 
 call mvn -U clean install -f ./mind-compiler/pom.xml --projects org.ow2.mind:mind-compiler
 
 rem Build the mind4se release
-call mvn -U clean install -f ./mind4se-compiler/pom.xml
+call mvn -U clean install
 
 popd
 @echo on
