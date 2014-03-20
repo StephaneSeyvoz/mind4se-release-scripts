@@ -3,6 +3,8 @@
 setlocal enableextensions
 
 rem *******************************************************************************
+rem USAGE: mind4se-build-release-using-workspace.bat workspace_folder
+rem
 rem Need installed and in the path:
 rem - mingw (gcc)
 rem - maven
