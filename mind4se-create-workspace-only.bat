@@ -7,9 +7,7 @@ rem set PATH=C:/ECP_SF/Tools/Python-3.3.3;%PATH%;C:/ECP_SF/Tools/Git/bin
 rem *******************************************************************************
 rem Need installed and in the path:
 rem - python 3+
-rem - mingw (gcc)
 rem - git 1.7.2+
-rem - maven 2+
 rem - curl or wget download utility
 rem *******************************************************************************
 
@@ -29,7 +27,7 @@ set local_release_manifest_file=src/assemble/resources/manifest.xml
 
 
 @echo.===============================================================================
-@echo.MIND4SE Release script
+@echo.== MIND4SE Release script: WORKSPACE CREATION ONLY
 @echo.===============================================================================
 @echo.
 @echo.*******************************************************************************
@@ -42,10 +40,6 @@ where /q python || echo.[ERROR] PYTHON not found in the path. PYTHON is needed t
 @echo.	[INFO] PYTHON found
 where /q git || echo.[ERROR] GIT not found in the path. GIT is needed to download source code. Exiting. && exit /b 1
 @echo.	[INFO] GIT found
-where /q mvn || echo.[ERROR] MAVEN not found in the path. MAVEN is needed to build the release. Exiting. && exit /b 1
-@echo.	[INFO] MAVEN found
-where /q gcc || echo.[ERROR] GCC not found in the path. GCC is needed to build the release. Exiting. && exit /b 1
-@echo.	[INFO] GCC found
 
 where /q curl && set curl_available=1 && echo.	[INFO] CURL found
 where /q wget && set wget_available=1 && echo.	[INFO] WGET found
@@ -122,22 +116,6 @@ call repo sync -c --no-clone-bundle --jobs=4
 @echo.
 
 call repo --no-pager manifest -r -o %local_release_manifest_file%
-
-@echo.
-@echo.*******************************************************************************
-@echo.[STEP 4] Build the MIND4SE release
-@echo.
-
-rem Cleanup maven local repository
-rem rmdir /Q /S "%USERPROFILE%/.m2/repository"
-
-rem Install mind-compiler pom into maven local repository (all mind4se plug-ins pom depend on this one, needed before building)
-@echo mvn -U clean install -f ./mind-compiler/pom.xml --projects org.ow2.mind:mind-compiler
-call mvn -U clean install -f ./mind-compiler/pom.xml --projects org.ow2.mind:mind-compiler
-
-rem Build the mind4se release
-@echo mvn -U clean install
-call mvn -U clean install
 
 popd
 
