@@ -14,8 +14,9 @@ rem - curl or wget download utility
 rem *******************************************************************************
 
 rem PUBLIC
-set http_proxy=http://pipf.fr.schneider-electric.com:8080
-set https_proxy=https://pipf.fr.schneider-electric.com:8080
+rem set http_proxy=http://pipf.fr.schneider-electric.com:8080
+rem set https_proxy=https://pipf.fr.schneider-electric.com:8080
+set proxy_url=pipf.fr.schneider-electric.com:8080
 set repo_tool_url=https://raw.github.com/esrlabs/git-repo/master/repo
 set repo_tool_dir=repo_tool
 set release_folder=mind4se-release
@@ -29,7 +30,7 @@ set local_release_manifest_file=src/assemble/resources/manifest.xml
 
 
 @echo.===============================================================================
-@echo.MIND4SE Release script
+@echo.== MIND4SE Release script: WORKSPACE CREATION ONLY
 @echo.===============================================================================
 @echo.
 @echo.*******************************************************************************
@@ -42,10 +43,6 @@ where /q python || echo.[ERROR] PYTHON not found in the path. PYTHON is needed t
 @echo.	[INFO] PYTHON found
 where /q git || echo.[ERROR] GIT not found in the path. GIT is needed to download source code. Exiting. && exit /b 1
 @echo.	[INFO] GIT found
-where /q mvn || echo.[ERROR] MAVEN not found in the path. MAVEN is needed to build the release. Exiting. && exit /b 1
-@echo.	[INFO] MAVEN found
-where /q gcc || echo.[ERROR] GCC not found in the path. GCC is needed to build the release. Exiting. && exit /b 1
-@echo.	[INFO] GCC found
 
 where /q curl && set curl_available=1 && echo.	[INFO] CURL found
 where /q wget && set wget_available=1 && echo.	[INFO] WGET found
@@ -78,13 +75,13 @@ rmdir /S /Q %repo_tool_dir% > NUL 2>&1
 mkdir %repo_tool_dir%
 if defined curl_available (
 	@echo.	[INFO] Downloading repo tool from "%repo_tool_url%" into folder "%repo_tool_dir%" using curl
-	curl --silent --output %repo_tool_dir%/repo %repo_tool_url%
-	curl --silent --output %repo_tool_dir%/repo.cmd %repo_tool_url%.cmd
+	curl -x %proxy_url% --silent --output %repo_tool_dir%/repo %repo_tool_url%
+	curl -x %proxy_url% --silent --output %repo_tool_dir%/repo.cmd %repo_tool_url%.cmd
 )
 if not defined curl_available if defined wget_available (
 	@echo.	[INFO] Downloading repo tool from "%repo_tool_url%" into folder "%repo_tool_dir%" using wget
-	wget --no-check-certificate %repo_tool_url% -O %repo_tool_dir%/repo > NUL 2>&1
-	wget --no-check-certificate %repo_tool_url%.cmd -O %repo_tool_dir%/repo.cmd > NUL 2>&1
+	wget -e https_proxy=%proxy_url% --no-check-certificate %repo_tool_url% -O %repo_tool_dir%/repo > NUL 2>&1
+	wget -e https_proxy=%proxy_url% --no-check-certificate %repo_tool_url%.cmd -O %repo_tool_dir%/repo.cmd > NUL 2>&1
 )
 
 @echo.
