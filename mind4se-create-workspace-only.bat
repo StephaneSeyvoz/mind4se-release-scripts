@@ -117,19 +117,19 @@ pushd %release_folder%
 @echo. "%mind4se_manifest_url%" (branch %mind4se_manifest_branch%)
 @echo.
 
-call repo init -u %mind4se_manifest_url% -b %mind4se_manifest_branch%
+call repo init -u %mind4se_manifest_url% -b %mind4se_manifest_branch% || exit /b 1
 
 @echo.
 @echo.[STEP 4.3] Synchronize the workspace by downloading source code
 @echo.
 
-call repo sync -c --no-clone-bundle --jobs=4
+call repo sync -c --no-clone-bundle --jobs=4 || exit /b 1
 
 @echo.
 @echo.[STEP 4.4] Generate release specific manifest file into "%local_release_manifest_file%"
 @echo.
 
-call repo --no-pager manifest -r -o %local_release_manifest_file%
+call repo --no-pager manifest -r -o %local_release_manifest_file% || exit /b 1
 
 popd
 
