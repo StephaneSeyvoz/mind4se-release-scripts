@@ -38,8 +38,8 @@ echo.
 
 pushd %release_workspace%
 
-echo.mvn deploy -rf com.se.mind:min4dse-compiler -Dteamforge
-call mvn deploy -rf com.se.mind:min4dse-compiler -Dteamforge || exit /b 1
+echo.mvn collabnet:deploy-to-releases --projects com.se.mind:min4dse-compiler -Dteamforge
+call mvn collabnet:deploy-to-releases --projects com.se.mind:min4dse-compiler -Dteamforge || exit /b 1
 
 popd
 
