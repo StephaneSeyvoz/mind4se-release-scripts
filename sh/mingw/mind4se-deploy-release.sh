@@ -3,19 +3,19 @@
 #export PATH=/c/ECP_SF/Tools/Python-3.3.3:$PATH:/c/ECP_SF/Tools/Git/bin
 
 # *******************************************************************************
-# USAGE: mind4se-install-release.sh release_workspace
+# USAGE: mind4se-deploy-release.sh release_workspace
 #
-# This script will generate the MIND4SE release with maven using the provided workspace
+# This script will deploy the MIND4SE release previously generated into release_workspace
 #
 # REQUIREMENTS:
 # Need installed and in the path:
-# - mingw (gcc)
 # - maven
+# - a valid settings.xml file with teamforge credentials
 # *******************************************************************************
 
 printf '\n'
 printf '===============================================================================\n'
-printf '== MIND4SE Release script: INSTALL RELEASE\n'
+printf '== MIND4SE Release script: DEPLOY RELEASE\n'
 printf '===============================================================================\n'
 printf '\n'
 printf '*******************************************************************************\n'
@@ -39,28 +39,14 @@ if ! which mvn > /dev/null 2>&1; then
 fi
 printf '\t[INFO] MAVEN found\n'
 
-if ! which gcc > /dev/null 2>&1; then
-	printf '[ERROR] GCC not found in the path. GCC is needed to build the release. Exiting.\n'
-	exit 1
-fi
-printf '\t[INFO] GCC found\n'
-
 printf '\n'
 printf '*******************************************************************************\n'
-printf '[STEP 3] Build the MIND4SE release into workspace "%s"\n' $release_workspace
+printf '[STEP 3] Deploying MIND4SE release into teamforge\n'
 printf '\n'
 
 pushd $release_workspace > /dev/null 2>&1
 
-# Cleanup maven local repository
-# rm -rf "~/.m2/repository"
-
-# Install mind-compiler pom into maven local repository (all mind4se plug-ins pom depend on this one, needed before building)
-printf 'mvn -U clean install -f ./mind-compiler/pom.xml --projects org.ow2.mind:mind-compiler\n'
-mvn -U clean install -f ./mind-compiler/pom.xml --projects org.ow2.mind:mind-compiler || exit 1
-
-# Build the mind4se release
-printf 'mvn -U clean install\n'
-mvn -U clean install || exit 1
+printf 'mvn collabnet:deploy-to-releases --projects com.se.mind:min4dse-compiler -Dteamforge\n'
+mvn collabnet:deploy-to-releases --projects com.se.mind:min4dse-compiler -Dteamforge || exit 1
 
 popd > /dev/null 2>&1

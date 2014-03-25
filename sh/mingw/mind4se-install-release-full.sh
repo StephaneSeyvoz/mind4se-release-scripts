@@ -23,7 +23,7 @@ export mind4se_manifest_default_branch=master
 
 printf '\n'
 printf '===============================================================================\n'
-printf '== MIND4SE Release script: FULL\n'
+printf '== MIND4SE Release script: INSTALL RELEASE FULL\n'
 printf '===============================================================================\n'
 printf '\n'
 printf '*******************************************************************************\n'
