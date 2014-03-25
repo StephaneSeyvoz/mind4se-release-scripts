@@ -1,5 +1,4 @@
 @echo off
-
 setlocal enableextensions
 
 rem set PATH=C:/ECP_SF/Tools/Python-3.3.3;%PATH%;C:/ECP_SF/Tools/Git/cmd

@@ -1,9 +1,8 @@
 @echo off
-
 setlocal enableextensions
 
 rem *******************************************************************************
-rem USAGE: mind4se-build-release-using-workspace.bat release_workspace
+rem USAGE: mind4se-install-release.bat release_workspace
 rem
 rem This script will generate the MIND4SE release with maven using the provided workspace
 rem
@@ -15,7 +14,7 @@ rem ****************************************************************************
 
 echo.
 echo.===============================================================================
-echo.== MIND4SE Release script: BUILD RELEASE
+echo.== MIND4SE Release script: INSTALL RELEASE
 echo.===============================================================================
 echo.
 echo.*******************************************************************************

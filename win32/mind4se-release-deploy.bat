@@ -1,11 +1,10 @@
 @echo off
-
 setlocal enableextensions
 
-rem set PATH=C:/ECP_SF/Tools/Python-3.3.3;%PATH%;C:/ECP_SF/Tools/Git/cmd
-
 rem *******************************************************************************
-rem USAGE: mind4se-release-deploy.bat release_workspace
+rem USAGE: mind4se-deploy-release.bat release_workspace
+rem
+rem This script will deploy the MIND4SE release previously generated into release_workspace
 rem
 rem REQUIREMENTS:
 rem Need installed and in the path:
@@ -14,7 +13,7 @@ rem - a valid settings.xml file with teamforge credentials
 rem *******************************************************************************
 
 echo.===============================================================================
-echo.== MIND4SE Release script: DEPLOY
+echo.== MIND4SE Release script: DEPLOY RELEASE
 echo.===============================================================================
 echo.
 echo.*******************************************************************************
