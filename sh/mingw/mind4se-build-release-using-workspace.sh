@@ -61,6 +61,6 @@ mvn -U clean install -f ./mind-compiler/pom.xml --projects org.ow2.mind:mind-com
 
 # Build the mind4se release
 printf 'mvn -U clean install\n'
-mvn -U clean install -DskipTests || exit 1
+mvn -U clean install || exit 1
 
 popd > /dev/null 2>&1

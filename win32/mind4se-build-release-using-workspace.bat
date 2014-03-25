@@ -51,7 +51,7 @@ call mvn -U clean install -f ./mind-compiler/pom.xml --projects org.ow2.mind:min
 
 rem Build the mind4se release
 echo.mvn -U clean install
-call mvn -U clean install -DskipTests || exit /b 1
+call mvn -U clean install || exit /b 1
 
 popd
 
