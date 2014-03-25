@@ -3,7 +3,7 @@
 #export PATH=/c/ECP_SF/Tools/Python-3.3.3:$PATH:/c/ECP_SF/Tools/Git/bin
 
 # *******************************************************************************
-# USAGE: mind4se-build-release-using-workspace.sh release_workspace
+# USAGE: mind4se-install-release.sh release_workspace
 #
 # This script will generate the MIND4SE release with maven using the provided workspace
 #
