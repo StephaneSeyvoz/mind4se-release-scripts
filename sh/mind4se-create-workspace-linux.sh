@@ -3,7 +3,7 @@
 #export PATH=/c/ECP_SF/Tools/Python-3.3.3:$PATH:/c/ECP_SF/Tools/Git/bin
 
 # *******************************************************************************
-# USAGE: mind4se-create-workspace.sh manifest_branch_name workspace_folder
+# USAGE: mind4se-create-workspace-linux.sh manifest_branch_name workspace_folder
 #
 # This script generates a full workspace into provided workspace_folder folder
 #
@@ -19,7 +19,7 @@ export proxy_url=pipf.fr.schneider-electric.com:8080
 export http_proxy=http://$proxy_url
 export https_proxy=https://$proxy_url
 # PRIVATE - REPO TOOL
-export repo_tool_url=https://raw.github.com/esrlabs/git-repo/master/repo
+export repo_tool_url=http://commondatastorage.googleapis.com/git-repo-downloads/repo
 export repo_tool_dir=repo_tool
 # PRIVATE - WORKSPACE
 export release_default_workspace=mind4se-release
@@ -28,8 +28,8 @@ export mind4se_manifest_url=https://github.com/geoffroyjabouley/mind4se-release-
 export mind4se_manifest_default_branch=master
 export local_release_manifest_file=src/assemble/resources/manifest.xml
 # PRIVATE - TOOLS MINIMAL VERSION
-[ $python_minimal_version_required ] || export python_minimal_version_required=3
-[ $git_minimal_version_required ] || export git_minimal_version_required=1.7.2
+export python_minimal_version_required=2.6
+export git_minimal_version_required=1.7.2
 
 printf '\n'
 printf '===============================================================================\n'
@@ -62,7 +62,6 @@ printf '[STEP 2] Checking environment\n'
 printf '\n'
 printf '[STEP 2.1] Checking Tools availability into path\n'
 printf '\n'
-
 
 if ! which python > /dev/null 2>&1; then
 	printf '[ERROR] PYTHON not found in the path. PYTHON is needed to download source code. Exiting.\n'
@@ -169,3 +168,4 @@ printf '\n'
 repo --no-pager manifest -r -o $local_release_manifest_file || exit 1
 
 popd > /dev/null 2>&1
+
