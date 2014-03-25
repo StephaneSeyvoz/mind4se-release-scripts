@@ -28,8 +28,8 @@ export mind4se_manifest_url=https://github.com/geoffroyjabouley/mind4se-release-
 export mind4se_manifest_default_branch=master
 export local_release_manifest_file=src/assemble/resources/manifest.xml
 # PRIVATE - TOOLS MINIMAL VERSION
-[ $python_minimal_version_required ] || export python_minimal_version_required=2.6
-[ $git_minimal_version_required ] || export git_minimal_version_required=1.7.2
+export python_minimal_version_required=2.6
+export git_minimal_version_required=1.7.2
 
 printf '\n'
 printf '===============================================================================\n'
