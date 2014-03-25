@@ -2,7 +2,7 @@
 
 setlocal enableextensions
 
-rem set PATH=C:/ECP_SF/Tools/Python-3.3.3;%PATH%;C:/ECP_SF/Tools/Git/bin
+rem set PATH=C:/ECP_SF/Tools/Python-3.3.3;%PATH%;C:/ECP_SF/Tools/Git/cmd
 
 rem *******************************************************************************
 rem USAGE: mind4se-release-full.bat manifest_branch_name
