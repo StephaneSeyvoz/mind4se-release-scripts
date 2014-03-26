@@ -112,6 +112,9 @@ echo.[STEP 3.2] Installing repo tool in the path
 echo.
 
 set PATH=%CD:\=/%/%repo_tool_dir%;%PATH:\=/%
+echo.	[INFO] Repo tool installed in path
+echo.	%PATH%
+echo.
 
 echo.
 echo.*******************************************************************************
