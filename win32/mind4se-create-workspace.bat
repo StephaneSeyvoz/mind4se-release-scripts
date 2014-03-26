@@ -120,7 +120,7 @@ echo.
 echo.[STEP 4.1] Create the release workspace "%release_workspace%"
 echo.
 
-rmdir /Q /S %release_workspace% > NUL 2>&1
+rem rmdir /Q /S %release_workspace% > NUL 2>&1
 mkdir %release_workspace%
 pushd %release_workspace%
 
