@@ -124,11 +124,11 @@ mkdir $repo_tool_dir
 export https_proxy=$proxy_url
 if [ $curl_available ]; then
 	printf '\t[INFO] Downloading repo tool from "%s" into folder "%s/%s" using curl' $repo_tool_url $PWD $repo_tool_dir
-	curl -x $proxy_url --silent --output $repo_tool_dir/repo $repo_tool_url
+	curl -x $proxy_url --insecure --output $repo_tool_dir/repo $repo_tool_url
 fi
 if [ ! $curl_available ] && [ $wget_available ]; then
 	printf '\t[INFO] Downloading repo tool from "%s" into folder "%s/%s" using wget' $repo_tool_url $PWD $repo_tool_dir
-	wget -e https_proxy=$proxy_url --no-check-certificate $repo_tool_url -O $repo_tool_dir/repo > /dev/null 2>&1
+	wget -e https_proxy=$proxy_url --no-check-certificate $repo_tool_url -O $repo_tool_dir/repo
 fi
 chmod a+x $repo_tool_dir/repo
 
