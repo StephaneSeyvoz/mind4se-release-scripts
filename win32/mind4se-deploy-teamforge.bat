@@ -2,9 +2,9 @@
 setlocal enableextensions
 
 rem *******************************************************************************
-rem USAGE: mind4se-deploy-release.bat release_workspace
+rem USAGE: mind4se-deploy-teamforge.bat release_workspace
 rem
-rem This script will deploy the MIND4SE release previously generated into release_workspace
+rem This script will deploy to Teamforge the MIND4SE release previously generated into release_workspace
 rem
 rem REQUIREMENTS:
 rem Need installed and in the path:
@@ -20,7 +20,8 @@ echo.***************************************************************************
 echo.[STEP 1] Checking parameter
 echo.
 
-if "%1"=="" echo [ERROR] An existing workspace folder is a mandatory parameter. Exiting. & exit /b 1
+if "%1"=="" echo.[ERROR] Missing workspace folder, which is a mandatory parameter. Exiting. & exit /b 1
+if not exist %1\nul echo.[ERROR] Provided workspace "%1" does not exist. Exiting. & exit /b 1
 set release_workspace=%1
 
 echo.

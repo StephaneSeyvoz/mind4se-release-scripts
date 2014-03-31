@@ -3,9 +3,9 @@
 #export PATH=/c/ECP_SF/Tools/Python-3.3.3:$PATH:/c/ECP_SF/Tools/Git/bin
 
 # *******************************************************************************
-# USAGE: mind4se-deploy-release.sh release_workspace
+# USAGE: mind4se-deploy-teamforge.sh release_workspace
 #
-# This script will deploy the MIND4SE release previously generated into release_workspace
+# This script will deploy to Teamforge the MIND4SE release previously generated into release_workspace
 #
 # REQUIREMENTS:
 # Need installed and in the path:
@@ -23,7 +23,11 @@ printf '[STEP 1] Checking parameter\n'
 printf '\n'
 
 if [ -z "$1" ]; then
-	printf '[ERROR] An existing workspace folder is a mandatory parameter. Exiting.\n'
+	printf '[ERROR] Missing workspace folder, which is a mandatory parameter. Exiting.\n'
+	exit 1
+fi
+if [ ! -d "$1" ]; then
+	printf '[ERROR] Provided workspace "%s" does not exist. Exiting.\n' $1
 	exit 1
 fi
 export release_workspace=$1
