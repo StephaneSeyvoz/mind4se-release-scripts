@@ -47,6 +47,6 @@ printf '\n'
 pushd $release_workspace > /dev/null 2>&1
 
 printf 'mvn collabnet:deploy-to-releases --projects com.se.mind:min4dse-compiler -Dteamforge\n'
-mvn collabnet:deploy-to-releases --projects com.se.mind:min4dse-compiler -Dteamforge || exit 1
+mvn collabnet:deploy-to-releases --projects :mind4se-compiler -Dteamforge || exit 1
 
 popd > /dev/null 2>&1

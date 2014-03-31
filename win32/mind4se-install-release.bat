@@ -45,8 +45,8 @@ rem Cleanup maven local repository
 rem rmdir /Q /S "%USERPROFILE%/.m2/repository"
 
 rem Install mind-compiler pom into maven local repository (all mind4se plug-ins pom depend on this one, needed before building)
-echo.mvn -U clean install -f ./mind-compiler/pom.xml --projects org.ow2.mind:mind-compiler
-call mvn -U clean install -f ./mind-compiler/pom.xml --projects org.ow2.mind:mind-compiler || exit /b 1
+echo.mvn -U clean install -f ./mind-compiler/pom.xml --projects :mind-compiler
+call mvn -U clean install -f ./mind-compiler/pom.xml --projects :mind-compiler || exit /b 1
 
 rem Build the mind4se release
 echo.mvn -U clean install
