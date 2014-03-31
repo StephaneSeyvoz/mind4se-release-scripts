@@ -56,7 +56,7 @@ pushd $release_workspace > /dev/null 2>&1
 # rm -rf "~/.m2/repository"
 
 # Install mind-compiler pom into maven local repository (all mind4se plug-ins pom depend on this one, needed before building)
-printf 'mvn -U clean install -f ./mind-compiler/pom.xml --projects org.ow2.mind:mind-compiler\n'
+printf 'mvn -U clean install -f ./mind-compiler/pom.xml --projects :mind-compiler\n'
 mvn -U clean install -f ./mind-compiler/pom.xml --projects :mind-compiler || exit 1
 
 # Build the mind4se release

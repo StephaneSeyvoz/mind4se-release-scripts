@@ -33,13 +33,13 @@ echo.	[INFO] MAVEN found
 
 echo.
 echo.*******************************************************************************
-echo.[STEP 3] Deploying MIND4SE release into teamforge
+echo.[STEP 3] Deploying MIND4SE release into teamforge (Rebuild needed)
 echo.
 
 pushd %release_workspace%
 
-echo.mvn collabnet:deploy-to-releases --projects :mind4se-compiler -Dteamforge
-call mvn collabnet:deploy-to-releases --projects :mind4se-compiler -Dteamforge || exit /b 1
+echo.mvn clean install collabnet:deploy-to-releases --projects :mind4se-compiler -Dteamforge
+call mvn clean install collabnet:deploy-to-releases --projects :mind4se-compiler -Dteamforge || exit /b 1
 
 popd
 
