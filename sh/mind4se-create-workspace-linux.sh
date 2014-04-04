@@ -24,7 +24,7 @@ export repo_tool_dir=repo_tool
 # PRIVATE - WORKSPACE
 export release_default_workspace=mind4se-release
 # PRIVATE - MANIFEST
-export mind4se_manifest_url=https://github.com/geoffroyjabouley/mind4se-release-manifest
+export mind4se_manifest_url=https://github.com/StephaneSeyvoz/mind4se-release-manifest
 export mind4se_manifest_default_branch=master
 export local_release_manifest_file=src/assemble/resources/manifest.xml
 # PRIVATE - TOOLS MINIMAL VERSION
